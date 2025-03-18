@@ -10,12 +10,27 @@ export class AnimalService {
 
   }
 
+  private mapToEntity(animal: any): Animal {
+    return {
+      id: animal.id,
+      nome: animal.nome,
+      idade: animal.idade,
+      sexo: animal.sexo,
+      raca: animal.raca,
+      porte: animal.porte,
+      temperamento: animal.temperamento,
+      historico_saude: animal.historico_saude,
+      necessidades_especiais: animal.necessidades_especiais
+    };
+  }
+
   create(createAnimalDto: CreateAnimalDto) {
     return 'This action adds a new animal';
   }
 
-  findAll() {
-    return `This action returns all animal`;
+  async findAll(): Promise<Animal[]> {
+    const animal = await this.prisma.animal.findMany();
+    return animal.map(animal => this.mapToEntity(animal));
   }
 
   findOne(id: number) {
