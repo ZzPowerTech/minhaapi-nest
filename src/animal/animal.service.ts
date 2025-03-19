@@ -39,9 +39,9 @@ export class AnimalService {
     return `This action returns a #${id} animal`;
   }
 
-  async update(id: string, updateAnimalDto: UpdateAnimalDto): Promise<Animal> {
+  async update(id: number, updateAnimalDto: UpdateAnimalDto): Promise<Animal> {
     const animal = await this.prisma.animal.update({
-      where: {id},
+      where: {id: id.toString()},
       data: updateAnimalDto});
     return this.mapToEntity(animal);
     
