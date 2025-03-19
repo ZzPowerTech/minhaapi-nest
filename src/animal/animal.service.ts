@@ -24,8 +24,10 @@ export class AnimalService {
     };
   }
 
-  create(createAnimalDto: CreateAnimalDto) {
-    return 'This action adds a new animal';
+  async create(createAnimalDto: CreateAnimalDto): Promise<Animal> {
+    const animal = await this.prisma.animal.create({
+      data: createAnimalDto});
+    return this.mapToEntity(animal);
   }
 
   async findAll(): Promise<Animal[]> {
@@ -37,8 +39,12 @@ export class AnimalService {
     return `This action returns a #${id} animal`;
   }
 
-  update(id: number, updateAnimalDto: UpdateAnimalDto) {
-    return `This action updates a #${id} animal`;
+  async update(id: string, updateAnimalDto: UpdateAnimalDto): Promise<Animal> {
+    const animal = await this.prisma.animal.update({
+      where: {id},
+      data: updateAnimalDto});
+    return this.mapToEntity(animal);
+    
   }
 
   remove(id: number) {
