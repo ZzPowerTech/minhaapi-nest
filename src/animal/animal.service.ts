@@ -6,9 +6,7 @@ import { PrismaService } from 'prisma/prisma.service';
 
 @Injectable()
 export class AnimalService {
-  constructor(private prisma: PrismaService) {
-
-  }
+  constructor(private prisma: PrismaService) {}
 
   private mapToEntity(animal: any): Animal {
     return {
@@ -20,34 +18,43 @@ export class AnimalService {
       porte: animal.porte,
       temperamento: animal.temperamento,
       historico_saude: animal.historico_saude,
-      necessidades_especiais: animal.necessidades_especiais
+      necessidades_especiais: animal.necessidades_especiais,
     };
   }
 
   async create(createAnimalDto: CreateAnimalDto): Promise<Animal> {
     const animal = await this.prisma.animal.create({
-      data: createAnimalDto});
+      data: createAnimalDto,
+    });
     return this.mapToEntity(animal);
   }
 
   async findAll(): Promise<Animal[]> {
     const animal = await this.prisma.animal.findMany();
-    return animal.map(animal => this.mapToEntity(animal));
+    return animal.map((animal) => this.mapToEntity(animal));
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} animal`;
+  async findOne(id: String) {
+    const animal = await this.prisma.animal.findMany({
+      where: { id: id.toString() },
+    });
+    return animal.map((animal) => this.mapToEntity(animal));
   }
 
-  async update(id: number, updateAnimalDto: UpdateAnimalDto): Promise<Animal> {
+  async update(id: String, updateAnimalDto: UpdateAnimalDto): Promise<Animal> {
     const animal = await this.prisma.animal.update({
-      where: {id: id.toString()},
-      data: updateAnimalDto});
+      where: { id: id.toString() },
+      data: updateAnimalDto,
+    });
     return this.mapToEntity(animal);
-    
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} animal`;
+  async remove(id: String): Promise<Animal> {
+    console.log(`Animal deletado com o id: ${id}`);
+    const animal = await this.prisma.animal.delete({
+      where: { id: id.toString() },
+    });
+    console.log(`Animal deleteado: ${JSON.stringify(animal)}`);
+    return this.mapToEntity(animal);
   }
 }

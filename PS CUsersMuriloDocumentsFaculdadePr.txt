@@ -1,0 +1,21 @@
+PS C:\Users\Murilo\Documents\Faculdade\Projetos\minha-api-nest> npm start
+
+> minha-api-nest@0.0.1 start
+> nest start
+
+[Nest] 5404  - 15/04/2025, 18:00:39     LOG [NestFactory] Starting Nest application...
+[Nest] 5404  - 15/04/2025, 18:00:39     LOG [InstanceLoader] AppModule dependencies initialized +18ms
+[Nest] 5404  - 15/04/2025, 18:00:39     LOG [InstanceLoader] AnimalModule dependencies initialized +0ms
+[Nest] 5404  - 15/04/2025, 18:00:39     LOG [RoutesResolver] AppController {/}: +4ms
+[Nest] 5404  - 15/04/2025, 18:00:39     LOG [RouterExplorer] Mapped {/, GET} route +2ms
+[Nest] 5404  - 15/04/2025, 18:00:39     LOG [RoutesResolver] AnimalController {/animal}: +0ms
+[Nest] 5404  - 15/04/2025, 18:00:39     LOG [RouterExplorer] Mapped {/animal, POST} route +1ms
+[Nest] 5404  - 15/04/2025, 18:00:39     LOG [RouterExplorer] Mapped {/animal, GET} route +1ms
+[Nest] 5404  - 15/04/2025, 18:00:39     LOG [RouterExplorer] Mapped {/animal/:id, GET} route +1ms
+[Nest] 5404  - 15/04/2025, 18:00:39     LOG [RouterExplorer] Mapped {/animal/:id, PATCH} route +1ms
+[Nest] 5404  - 15/04/2025, 18:00:39     LOG [RouterExplorer] Mapped {/animal/:id, DELETE} route +0ms
+[Nest] 5404  - 15/04/2025, 18:00:39     LOG [NestApplication] Nest application successfully started +42ms
+Animal deletado com o id: cm9iz9dav0001v9asumkaaq12
+Animal deleteado: {"id":"cm9iz9dav0001v9asumkaaq12","nome":"Luna","idade":2.5,"sexo":"Fêmea","raca":"Golden Retriever","porte":2,"temperamento":"Amigável, dócil","historico_saude":["Vacinada","Vermifugada"],"necessidades_especiais":["Alimentação controlada","Consulta mensal com veterinário"]}
+Animal deletado com o id: cm9izp03s0000v964acj5jhaw
+Animal deleteado: {"id":"cm9izp03s0000v964acj5jhaw","nome":"Luna","idade":2.5,"sexo":"Fêmea","raca":"testttt","porte":2,"temperamento":"Amigável, dócil","historico_saude":["Vacinada","Vermifugada"],"necessidades_especiais":["Alimentação controlada","Consulta mensal com veterinário"]}

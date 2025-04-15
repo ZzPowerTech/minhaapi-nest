@@ -18,17 +18,17 @@ export class AnimalController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number) {
-    return this.animalService.findOne(+id);
+  findOne(@Param('id') id: String) {
+    return this.animalService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: number, @Body() updateAnimalDto: UpdateAnimalDto) {
-    return this.animalService.update(+id, updateAnimalDto);
+  update(@Param('id') id: String, @Body() updateAnimalDto: UpdateAnimalDto) {
+    return this.animalService.update(id, updateAnimalDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: number) {
-    return this.animalService.remove(+id);
+  remove(@Param('id') id: String) {
+    return this.animalService.remove(id);
   }
 }
