@@ -1,9 +1,11 @@
-import { IsNumber, IsString } from 'class-validator'
+import { IsNumber, IsString, IsArray, IsOptional, IsPositive } from 'class-validator';
+
 export class CreateAnimalDto {
     @IsString()
     nome: string;
 
     @IsNumber()
+    @IsPositive()
     idade: number;
 
     @IsString()
@@ -13,14 +15,19 @@ export class CreateAnimalDto {
     raca: string;
 
     @IsNumber()
+    @IsPositive()
     porte: number;
 
     @IsString()
     temperamento: string;
 
-    @IsString()
-    historico_saude: string[];
+    @IsArray()
+    @IsOptional()
+    @IsString({ each: true }) // Garante que cada item do array é uma string
+    historico_saude?: string[];
 
-    @IsString()
-    necessidades_especiais: string[]; 
+    @IsArray()
+    @IsOptional()
+    @IsString({ each: true }) // Garante que cada item do array é uma string
+    necessidades_especiais?: string[];
 }

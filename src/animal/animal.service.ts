@@ -24,7 +24,16 @@ export class AnimalService {
 
   async create(createAnimalDto: CreateAnimalDto): Promise<Animal> {
     const animal = await this.prisma.animal.create({
-      data: createAnimalDto,
+      data: {
+        nome: createAnimalDto.nome,
+        idade: createAnimalDto.idade,
+        sexo: createAnimalDto.sexo,
+        raca: createAnimalDto.raca,
+        porte: createAnimalDto.porte,
+        temperamento: createAnimalDto.temperamento,
+        historico_saude: createAnimalDto.historico_saude,
+        necessidades_especiais: createAnimalDto.necessidades_especiais,
+      },
     });
     return this.mapToEntity(animal);
   }
@@ -44,7 +53,16 @@ export class AnimalService {
   async update(id: String, updateAnimalDto: UpdateAnimalDto): Promise<Animal> {
     const animal = await this.prisma.animal.update({
       where: { id: id.toString() },
-      data: updateAnimalDto,
+      data: {
+        nome: updateAnimalDto.nome,
+        idade: updateAnimalDto.idade,
+        sexo: updateAnimalDto.sexo,
+        raca: updateAnimalDto.raca,
+        porte: updateAnimalDto.porte,
+        temperamento: updateAnimalDto.temperamento,
+        historico_saude: updateAnimalDto.historico_saude,
+        necessidades_especiais: updateAnimalDto.necessidades_especiais,
+      },
     });
     return this.mapToEntity(animal);
   }
